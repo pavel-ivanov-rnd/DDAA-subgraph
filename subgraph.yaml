@@ -1,0 +1,27 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DDAA
+    network: chapel
+    source:
+      address: "0x157F64390813afe6E81BF2514dC1521f35e437bD"
+      abi: DDAA
+      startBlock: 22722000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - orderSubmitted
+        - paymentToAnnotator
+      abis:
+        - name: DDAA
+          file: ./abis/DDAA.json
+      eventHandlers:
+        - event: orderSubmitted(uint256,address)
+          handler: handleorderSubmitted
+        - event: paymentToAnnotator(uint256,address,uint256)
+          handler: handlepaymentToAnnotator
+      file: ./src/ddaa.ts

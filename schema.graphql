@@ -1,0 +1,24 @@
+type Customer @entity {
+  id: ID!
+  ordersSubmitted: Int!
+}
+
+type Verifier @entity {
+  id: ID!
+  orders: Int!
+}
+
+type Annotator @entity {
+  id: ID!
+  rewards: BigInt!
+}
+
+type Order @entity {
+  id: ID!
+  balance: BigInt!
+  pricePerImage: BigInt!
+  customer: Bytes! #address
+  deadline: BigInt!
+  verifier: Bytes! #address
+  url: String!
+}
